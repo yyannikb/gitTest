@@ -1,0 +1,69 @@
+\usepackage[english]{babel}
+\usepackage{listings}
+\usepackage{color}
+\definecolor{Gray}{gray}{0.95}
+
+% Auto-title
+\makeatletter
+\DeclareRobustCommand{\getlstname}{%
+    \begingroup
+    % \lstname seems to change hyphens into \textendash
+    \def\textendash{-}%
+    \filename@parse{\lstname}%
+    \filename@base.\filename@ext%
+    \endgroup
+}
+\makeatother
+
+% fix the high tilde
+\usepackage{url}
+\lstset{literate=%
+    {~}{{\url{~}}}1
+}
+
+\lstdefinestyle{code}{
+    basicstyle = \small\ttfamily, % Font of the text
+    numbers = left,               % Position of the line numbers
+    numberstyle = \footnotesize,  % Style of line numbers
+    frame = tb,                   % Style of surrounding frame
+    framextopmargin=.75mm,        % Space margin top
+    framexbottommargin=.75mm,     % Space margin bottom
+    framexleftmargin=2mm,         % Space margin left
+    framexrightmargin=2mm,        % Space margin right
+    tabsize = 4,                  % Size of tab character
+    breaklines = false,           % Wrap lines of code that are too long
+    columns = fullflexible,     
+    showstringspaces = false,
+    backgroundcolor = \color{Gray},
+    title = \getlstname
+}
+\lstdefinestyle{text}{
+    basicstyle = \small\ttfamily, % Font of the text
+    frame = tb,                   % Style of the surrounding frame
+    framextopmargin=.75mm,        % Space margin top
+    framexbottommargin=.75mm,     % Space margin bottom
+    framexleftmargin=2mm,         % Space margin left
+    framexrightmargin=2mm,        % Space margin right
+    tabsize = 3,                  % Size of tab character
+    breaklines = true,            % Wrap lines of text that are too long
+    columns = flexible,     
+    showstringspaces = false,
+    backgroundcolor = \color{Gray},
+    title = \getlstname
+}
+\lstdefinestyle{inline}{
+    basicstyle = \small\ttfamily, % Font of the text
+    frame = tb,                   % Style of surrounding frame
+    framextopmargin=.75mm,        % Space margin top
+    framexbottommargin=.75mm,     % Space margin bottom
+    framexleftmargin=2mm,         % Space margin left
+    framexrightmargin=2mm,        % Space margin right
+    tabsize = 4,                  % Size of tab character
+    breaklines = false,           % Wrap lines of code that are too long
+    columns = fullflexible,     
+    showstringspaces = false,
+    backgroundcolor = \color{Gray}
+}
+\lstset{keepspaces=true}
+
+\renewcommand{\tt}[1]{\texttt{{#1}}}
